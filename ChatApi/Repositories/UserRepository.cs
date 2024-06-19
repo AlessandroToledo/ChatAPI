@@ -1,9 +1,10 @@
-﻿using Dapper;
+﻿using ChatApi.Repositories.Interface;
+using Dapper;
 using System.Data.SqlClient;
 
 namespace ChatApi.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly string _connectionString;
         public UserRepository(IConfiguration configuration)
@@ -21,7 +22,7 @@ namespace ChatApi.Repositories
             using (var sqlConnection = GetConnection())
             {
                 const string sql = "INSERT INTO chatusers VALUES (@nome)";
-                sqlConnection.Execute(sql, nome);
+                sqlConnection.Execute(sql, new { nome = nome });
             }
         }
 
@@ -39,7 +40,7 @@ namespace ChatApi.Repositories
             using (var sqlConnection = GetConnection())
             {
                 const string sql = "DELETE FROM chatusers WHERE nome = @nome";
-                sqlConnection.Execute(sql, nome);
+                sqlConnection.Execute(sql, new { nome = nome });
             }
         }
 

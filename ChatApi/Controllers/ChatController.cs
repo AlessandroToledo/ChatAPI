@@ -1,5 +1,5 @@
 ﻿using ChatApi.Entities;
-using ChatApi.Services;
+using ChatApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatApi.Controllers

@@ -1,8 +1,8 @@
-﻿namespace ChatApi.Services
+﻿namespace ChatApi.Repositories.Interface
 {
-    public interface IUserService
+    public interface IUserRepository
     {
-        void adduser(string nome);
+        void addUser(string nome);
         int usersOn();
         void deleteUser(string nome);
         IEnumerable<string> GetAllUsers();

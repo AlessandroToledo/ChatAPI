@@ -1,6 +1,6 @@
 ﻿using ChatApi.Entities;
 
-namespace ChatApi.Services
+namespace ChatApi.Services.Interfaces
 {
     public interface IChatService
     {

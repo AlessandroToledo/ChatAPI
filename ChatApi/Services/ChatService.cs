@@ -1,13 +1,14 @@
 ﻿using ChatApi.Entities;
-using ChatApi.Repositories;
+using ChatApi.Repositories.Interface;
+using ChatApi.Services.Interfaces;
 
 namespace ChatApi.Services
 {
     public class ChatService : IChatService
     {
-        private readonly ChatRepository _chatRepository;
+        private readonly IChatRepository _chatRepository;
 
-        public ChatService(ChatRepository chatRepository) 
+        public ChatService(IChatRepository chatRepository) 
         {
             _chatRepository = chatRepository;
         }
