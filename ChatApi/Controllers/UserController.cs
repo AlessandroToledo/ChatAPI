@@ -22,13 +22,10 @@ namespace ChatApi.Controllers
             {
                 _userService.addUser(nome);
                 return Ok("Sucesso!!");
-            } catch (Exception ex) {
-            
-                var response = new Response
-                {
-                    Message = ex.Message
-                };
-                return BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -42,11 +39,7 @@ namespace ChatApi.Controllers
             }
             catch (Exception ex)
             {
-                var response = new Response
-                {
-                    Message = ex.Message
-                };
-                return BadRequest(response);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -58,9 +51,9 @@ namespace ChatApi.Controllers
                 var count = _userService.usersOn();
                 return Ok(count);
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest("Falha!!");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -72,16 +65,11 @@ namespace ChatApi.Controllers
                 var users = _userService.GetAllUsers();
                 return Ok(users);
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest("Falha!!");
+                return BadRequest(ex.Message);
             }
         }
 
     }
-}
-
-public class Response
-{
-    public string Message { get; set; }
 }
