@@ -23,9 +23,9 @@ namespace ChatApi.Controllers
                 var chat = _chatService.getMessages();
                 return Ok(chat);
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest("Falha!!");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -37,9 +37,9 @@ namespace ChatApi.Controllers
                 _chatService.sendMessage(chat);
                 return Ok("Sucesso!!");
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest("Falha!!");
+                return BadRequest(ex.Message);
             }
         }
     }
