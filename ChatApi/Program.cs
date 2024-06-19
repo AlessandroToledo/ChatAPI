@@ -1,5 +1,7 @@
 using ChatApi.Repositories;
+using ChatApi.Repositories.Interface;
 using ChatApi.Services;
+using ChatApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +19,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<ChatRepository>();
+builder.Services.AddTransient<IChatRepository, ChatRepository>();
 builder.Services.AddTransient<IChatService, ChatService>();
 
 var app = builder.Build();

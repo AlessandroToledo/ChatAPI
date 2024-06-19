@@ -1,17 +1,18 @@
-﻿using ChatApi.Repositories;
+﻿using ChatApi.Repositories.Interface;
+using ChatApi.Services.Interfaces;
 
 namespace ChatApi.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(UserRepository userRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public void adduser(string nome)
+        public void addUser(string nome)
         {
             _userRepository.addUser(nome);
         }

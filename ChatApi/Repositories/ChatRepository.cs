@@ -1,10 +1,11 @@
 ﻿using ChatApi.Entities;
+using ChatApi.Repositories.Interface;
 using Dapper;
 using System.Data.SqlClient;
 
 namespace ChatApi.Repositories
 {
-    public class ChatRepository
+    public class ChatRepository : IChatRepository
     {
         private readonly string _connectionString;
         public ChatRepository(IConfiguration configuration)

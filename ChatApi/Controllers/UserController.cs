@@ -1,10 +1,10 @@
-﻿using ChatApi.Services;
+﻿using ChatApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatApi.Controllers
 {
     [ApiController]
-    [Route("chat/users")]
+    [Route("chat/")]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -20,11 +20,15 @@ namespace ChatApi.Controllers
         {
             try
             {
-                _userService.adduser(nome);
+                _userService.addUser(nome);
                 return Ok("Sucesso!!");
-            } catch
-            {
-                return BadRequest("Falha!!");
+            } catch (Exception ex) {
+            
+                var response = new Response
+                {
+                    Message = ex.Message
+                };
+                return BadRequest(response);
             }
         }
 
@@ -36,9 +40,13 @@ namespace ChatApi.Controllers
                 _userService.deleteUser(nome);
                 return Ok("Sucesso!!");
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest("Falha!!");
+                var response = new Response
+                {
+                    Message = ex.Message
+                };
+                return BadRequest(response);
             }
         }
 
@@ -71,4 +79,9 @@ namespace ChatApi.Controllers
         }
 
     }
+}
+
+public class Response
+{
+    public string Message { get; set; }
 }
